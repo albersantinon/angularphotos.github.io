@@ -3,97 +3,182 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Angular Photos — photography and videography between Manchester and Venice.">
+  <meta name="description" content="Angular Photos is a photographer and videographer creating cinematic visuals for music, events, artists and independent brands between Manchester and Venice.">
   <meta name="theme-color" content="#0d0d0d">
   <title>About — Angular Photos</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <header class="header" role="banner">
-    <!-- Fix 1: <a> not <div> so the logo is actually a link -->
-    <a href="index.html" class="logo" aria-label="Angular Photos — home">ANGULAR PHOTOS</a>
+<header class="header" role="banner">
 
-    <!-- Fix 2: hamburger button so the nav can be closed on mobile -->
-    <button class="nav-toggle"
-            aria-controls="main-nav"
-            aria-expanded="false"
-            aria-label="Open navigation menu">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </button>
+  <a href="index.html"
+     class="logo"
+     aria-label="Angular Photos — Home">
+     ANGULAR PHOTOS
+  </a>
 
-    <nav id="main-nav" class="nav" aria-label="Main navigation">
+  <button
+      class="nav-toggle"
+      aria-controls="main-nav"
+      aria-expanded="false"
+      aria-label="Open navigation menu">
+
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+
+  </button>
+
+  <nav
+      id="main-nav"
+      class="nav"
+      aria-label="Main navigation"
+      hidden>
+
       <a href="index.html">WORK</a>
       <a href="about.html" aria-current="page">ABOUT</a>
       <a href="contact.html">CONTACT</a>
-    </nav>
-  </header>
 
-  <main>
-    <section class="about">
-      <h1>VISUAL PHOTOTELLER</h1>
-      <p class="about-sub">
-        Photography & Videography<br>
-        Between Manchester and Venice
-      </p>
-      <p class="about-text">
-        I work with motion, light and the raw energy of the street.
-        My language is analog, minimal, direct.
-        I build visual stories through timing, instinct and atmosphere.
-      </p>
-      <p class="about-text">
-        Music and events are at the heart of what I shoot — the charged air before a set,
-        the blur of a crowd, the moments that don't repeat. I started on 35mm film and it
-        remains one of the things I love most: the grain, the commitment, the honesty of
-        a frame you can't delete.
-      </p>
-      <p class="about-text">
-        I work with artists on promo and visual identity, and I collaborate with small
-        independent businesses who need imagery with a real point of view — not stock,
-        not generic, just something that actually looks like them.
-      </p>
-    </section>
-  </main>
+  </nav>
 
-  <footer class="footer" role="contentinfo">
-    <p><a href="https://instagram.com/angularphotos"
-          style="color:inherit;text-decoration:none;"
-          aria-label="Angular Photos on Instagram">@angularphotos</a></p>
-    <p><small>© 2026 Angular Photos — All rights reserved.</small></p>
-  </footer>
+</header>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav    = document.getElementById('main-nav');
+<main>
 
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      toggle.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
-      nav.classList.toggle('is-open', !open);
+<section class="about">
+
+<h1>VISUAL PHOTOTELLER</h1>
+
+<p class="about-sub">
+Photography & Videography<br>
+Between Manchester and Venice
+</p>
+
+<p class="about-text">
+I work with motion, light and the raw energy of the street.
+My visual language is analog, minimal and direct.
+I build visual stories through timing, instinct and atmosphere.
+</p>
+
+<p class="about-text">
+Music and events are at the heart of what I shoot — the charged air before a set,
+the blur of a crowd, the moments that don't repeat.
+I started on 35mm film and it remains one of the things I love most:
+the grain, the commitment and the honesty of a frame you can't delete.
+</p>
+
+<p class="about-text">
+I work with artists on promo and visual identity,
+and I collaborate with independent businesses that need imagery with
+a genuine point of view—not stock, not generic, just something that
+actually looks like them.
+</p>
+
+</section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+
+<p>
+<a href="https://instagram.com/angularphotos"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Angular Photos on Instagram">
+
+@angularphotos
+
+</a>
+</p>
+
+<p>
+<small>© 2026 Angular Photos — All rights reserved.</small>
+</p>
+
+</footer>
+
+<script>
+
+const toggle = document.querySelector(".nav-toggle");
+const nav = document.getElementById("main-nav");
+
+if (toggle && nav) {
+
+    toggle.addEventListener("click", () => {
+
+        const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+        toggle.setAttribute("aria-expanded", String(!isOpen));
+        toggle.setAttribute(
+            "aria-label",
+            isOpen
+                ? "Open navigation menu"
+                : "Close navigation menu"
+        );
+
+        nav.classList.toggle("is-open", !isOpen);
+        nav.hidden = isOpen;
+
     });
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Open navigation menu');
-        nav.classList.remove('is-open');
-        toggle.focus();
-      }
+    document.addEventListener("keydown", (e) => {
+
+        if (e.key === "Escape" && !nav.hidden) {
+
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open navigation menu");
+
+            nav.classList.remove("is-open");
+            nav.hidden = true;
+
+            toggle.focus();
+
+        }
+
     });
 
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
-      });
+    nav.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open navigation menu");
+
+            nav.classList.remove("is-open");
+            nav.hidden = true;
+
+        });
+
     });
-  </script>
+
+    document.addEventListener("click", (e) => {
+
+        if (
+            !nav.hidden &&
+            !nav.contains(e.target) &&
+            !toggle.contains(e.target)
+        ) {
+
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open navigation menu");
+
+            nav.classList.remove("is-open");
+            nav.hidden = true;
+
+        }
+
+    });
+
+}
+
+</script>
 
 </body>
 </html>
